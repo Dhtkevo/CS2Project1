@@ -1,5 +1,7 @@
 package edu.westga.cs1302.nss.view.validator;
 
+import edu.westga.cs1302.nss.resources.UI;
+
 /**
  * The validator for ranges objects.
  * 
@@ -60,12 +62,13 @@ public class RangesValidator {
 	 */
 	public Double validateMagnitudeRange(String magnitudeRangeString) {
 		String newString = magnitudeRangeString.trim();
-		
-		if (newString.matches("^[1-9].\\d\\d?|(10.0)|^(0).01|^(0).[0-9][1-9]|^(0).[1-9][0-9]")) {
-			return Double.parseDouble(newString);
+
+		if (newString.matches("^[1-9].\\d\\d?|(10.00?)|^(0).01|^(0).[0-9][1-9]|^(0).[1-9][0-9]")) {
+			double mag = Double.parseDouble(newString);
+			return mag;
 		}
-		
-		this.magnitudeRangeError = "";
+
+		this.magnitudeRangeError = UI.ExceptionMessages.MAGNITUDE_OUT_OF_RANGE;
 		return -1.0;
 	}
 
