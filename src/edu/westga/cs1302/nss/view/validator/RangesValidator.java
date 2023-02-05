@@ -121,8 +121,13 @@ public class RangesValidator {
 	 *         significance range
 	 */
 	public Integer validateSignificanceRange(String significanceRangeString) {
-		// TODO Part 2-A Step 1.b.
-		this.significanceRangeError = "";
+		String newString = significanceRangeString.trim();
+
+		if (newString.matches("0|^[1-2]\\d?\\d?\\d?|3000|\\d?\\d?\\d?")) {
+			int sig = Integer.parseInt(newString);
+			return sig;
+		}
+		this.significanceRangeError = UI.ExceptionMessages.SIGNIFICANCE_OUT_OF_RANGE;
 		return -1;
 	}
 
