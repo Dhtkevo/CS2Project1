@@ -59,7 +59,12 @@ public class RangesValidator {
 	 *         if magnitudeRangeString does not represent a valid magnitude range
 	 */
 	public Double validateMagnitudeRange(String magnitudeRangeString) {
-		// TODO Part 2-A Step 1.a.
+		String newString = magnitudeRangeString.trim();
+		
+		if (newString.matches("^[1-9].\\d\\d|(10.0)|^(0).01")) {
+			return Double.parseDouble(newString);
+		}
+		
 		this.magnitudeRangeError = "";
 		return -1.0;
 	}
