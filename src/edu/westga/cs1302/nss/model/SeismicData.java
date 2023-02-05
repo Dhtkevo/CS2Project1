@@ -147,16 +147,19 @@ public class SeismicData {
 		if (segmentRange < 0.01) {
 			throw new IllegalArgumentException(UI.ExceptionMessages.INVALID_SEGMENT_RANGE);
 		}
-		int numSegmentsMinToRange = 0;
-		int numSegmentsRangeToMax = 0;
+		
+		int counter = 0;
+		double minMagnitude = Earthquake.MIN_MAGNITUDE;
+		double maxMagnitude = minMagnitude + segmentRange;
 
-		for (Earthquake quake : this.earthquakes) {
-			
+		Object[] array = this.earthquakes.toArray();
+		Earthquake[] quakes = this.earthquakes.toArray(new Earthquake[this.earthquakes.size()]);
+		
+		for (int index = 0; index < quakes.length; index++) {
+			if (quakes[index].getMagnitude() > minMagnitude && quakes[index].getMagnitude() <= maxMagnitude) {
+				counter++;
+			}
 		}
-		// creates array
-		// holds count of number of earthquakes in segment
-		// segment starting from 0 to segmentRange
-
 		return null;
 	}
 
