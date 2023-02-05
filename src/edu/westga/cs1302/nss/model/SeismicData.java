@@ -144,7 +144,19 @@ public class SeismicData {
 	 *         each segment. Returns null if this seismic data is empty.
 	 */
 	public int[] countEarthquakesByMagnitudeSegments(double segmentRange) {
-		// TODO Part 2-A Step 2
+		if (segmentRange < 0.01) {
+			throw new IllegalArgumentException(UI.ExceptionMessages.INVALID_SEGMENT_RANGE);
+		}
+		int numSegmentsMinToRange = 0;
+		int numSegmentsRangeToMax = 0;
+
+		for (Earthquake quake : this.earthquakes) {
+			
+		}
+		// creates array
+		// holds count of number of earthquakes in segment
+		// segment starting from 0 to segmentRange
+
 		return null;
 	}
 
@@ -226,14 +238,14 @@ public class SeismicData {
 		if (searchTerm == null) {
 			throw new IllegalArgumentException(UI.ExceptionMessages.SEARCH_TERM_CANNOT_BE_NULL);
 		}
-		
+
 		String lowerSearch = searchTerm.toLowerCase();
 
 		ArrayList<Earthquake> matchList = new ArrayList<Earthquake>();
 		for (Earthquake quake : this.earthquakes) {
 			if (quake.getLocation().toLowerCase().indexOf(lowerSearch) >= 0) {
 				matchList.add(quake);
-			} 
+			}
 		}
 		System.out.println(matchList);
 		return matchList;
