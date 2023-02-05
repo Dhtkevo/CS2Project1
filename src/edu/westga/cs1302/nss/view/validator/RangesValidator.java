@@ -61,7 +61,7 @@ public class RangesValidator {
 	public Double validateMagnitudeRange(String magnitudeRangeString) {
 		String newString = magnitudeRangeString.trim();
 		
-		if (newString.matches("^[1-9].\\d\\d|(10.0)|^(0).01")) {
+		if (newString.matches("^[1-9].\\d\\d?|(10.0)|^(0).01|^(0).[0-9][1-9]|^(0).[1-9][0-9]")) {
 			return Double.parseDouble(newString);
 		}
 		
